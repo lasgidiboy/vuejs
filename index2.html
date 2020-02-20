@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app1">
+      <p v-if="shows">i show u</p>
+      <p v-else>i hate u</p>
+      <p>i show u too</p>
+      <ul>
+        <li v-for="ingredient in ingredients">{{ingredient}}</li>
+        <li v-for="(person, index) in persons" :key="index">{{person.name}} {{index}}</li>
+      </ul>
+      <h1>{{isActive ? 'is Active': 'is Not Active'}}</h1>
+      <button @click="shows=!shows">click</button>
+    </div>
+    <script src="js/main2.js"></script>
+  </body>
+</html>
