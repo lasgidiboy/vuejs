@@ -16,11 +16,16 @@
       <p>i show u too</p>
       <ul>
         <li v-for="ingredient in ingredients">{{ingredient}}</li>
-        <li v-for="(person, index) in persons" :key="index">{{person.name}} {{index}}</li>
+        <li v-for="(person, index) in persons" :key="index">
+          {{person.name}} {{index}}
+        </li>
       </ul>
-      //"?" means if and ":" else
-      <h1>{{isActive ? 'is Active': 'is Not Active'}}</h1> 
+      <!-- "?" means if and ":" else -->
+      <h1>{{isActive ? 'is Active': 'is Not Active'}}</h1>
+      <p>{{ title.split('').reverse('').join('')}}</p>
       <button @click="shows=!shows">click</button>
+      <a :href="link">google</a>
+      <p :data="dataId">{{dataId}}</p>
     </div>
     <script src="js/main2.js"></script>
   </body>

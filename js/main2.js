@@ -3,6 +3,7 @@ new Vue({
     data: {
         shows: true,
         isActive: false,
+        dataId: 40,
         title: " i love dis",
         ingredients: ["meat", 'pepper', "onion"],
         persons: [
