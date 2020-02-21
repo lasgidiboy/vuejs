@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/vue.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="app">
+        <form action="">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name=""
+                id=""
+                value="checkedValue1"
+                checked
+                v-model="opt"
+              />
+              Display value
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name=""
+                id=""
+                value="checkedValue2"
+                checked
+                v-model="opt"
+              />
+              Display value
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                v-model="opt"
+                type="radio"
+                class="form-check-input"
+                name=""
+                id=""
+                value="checkedValue3"
+              />
+              Display value
+            </label>
+          </div>
+        </form>
+          <p>{{opt}}</p>
+
+      </div>
+    </div>
+    <script src="js/main2.js"></script>
+  </body>
+</html>

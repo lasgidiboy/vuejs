@@ -1,4 +1,4 @@
-new Vue({
+let app1=new Vue({
     el: '#app1',
     data: {
         shows: true,
@@ -10,5 +10,12 @@ new Vue({
             {name: "papper", age: 25, color: "red"},
             {name: "buku", age: "unknow", color: "blue"}
         ]
+    }
+})
+let app2 = new Vue({
+    el: '#app',
+    data: {
+        opt: [],
+        text: "text"
     }
 })
