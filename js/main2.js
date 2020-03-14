@@ -16,6 +16,19 @@ let app2 = new Vue({
     el: '#app',
     data: {
         opt: [],
-        text: "text"
+        text: "text",
+        styleObject: {
+            color: 'blue',
+            fontSize: '50px'
+        },
+        show: true
     }
 })
+
+let app3 = new Vue({
+  el: "#app3",
+  data: {
+      title: "measef",
+      
+  }
+});

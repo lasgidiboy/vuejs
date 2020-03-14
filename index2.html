@@ -14,16 +14,20 @@
       <p v-if="shows">i show u</p>
       <p v-else>i hate u</p>
       <p>i show u too</p>
+      <button @click="shows=!shows">click</button>
+
       <ul>
         <li v-for="ingredient in ingredients">{{ingredient}}</li>
+        <br>
         <li v-for="(person, index) in persons" :key="index">
-          {{person.name}} {{index}}
+          {{key}}{{index}} {{person.name}} 
         </li>
       </ul>
+      <button @click="ingredients.push('spices')">add</button>
+      <button @click="ingredients.pull()">remove</button>
       <!-- "?" means if and ":" else -->
       <h1>{{isActive ? 'is Active': 'is Not Active'}}</h1>
       <p>{{ title.split('').reverse('').join('')}}</p>
-      <button @click="shows=!shows">click</button>
       <a :href="link">google</a>
       <p :data="dataId">{{dataId}}</p>
     </div>

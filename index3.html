@@ -54,6 +54,9 @@
           </div>
         </form>
         <p>{{opt}}</p>
+        <h1 v-if="show" :style="styleObject">hello</h1>
+        <h1 v-else :style="{color: 'red'}">hello</h1>
+        <button @click="show= !show">press</button>
       </div>
     </div>
     <script src="js/main2.js"></script>
