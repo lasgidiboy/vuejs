@@ -1,0 +1,24 @@
+git --version
+$ git init //initialize local git repository
+$ git config --global user.name 'ur name'
+$ git config --global email'ur email'
+$ git add<file> //add files to index
+$ git . //add all files
+$ git status //check status
+$ git commit //commit changes in index
+$ git commit -m 'ur msg'
+$ git push //push to remote repository
+$ git pull // pull latest from remote repository
+$ git clone //clone repository into a new directory
+$ git branch name(papper) //to create a branch
+$ git checkout name(papper) //to switch from master to ur branch
+$ git merge name(papper) //to merge the master and d branch together
+$touch any files<index.html> // create new files 
+$git rm --cached <file>(index.html) // to untracked files
+:wq //to get of msg
+.gitignore // for if u dont wanna add a file to b commit u put/write d name of d file inside d .gitignore file
+
+linking it to github
+$git remote
+$git remote add origin https:the link
+$git push -u origin master   
