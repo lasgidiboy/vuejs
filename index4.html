@@ -12,8 +12,10 @@
   <body>
     <div id="app3">
     <span v-for="i in 20">{{i}}</span>
-    {{title}}
+    <h1>{{title}}</h1>
+    <button @click="show">show paragraph</button>
+    <p v-if="showParagraph">this is not always visible</p>
     </div>
     <script src="js/main2.js"></script>
   </body>
-</html>
+</html> 
