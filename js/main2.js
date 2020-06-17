@@ -2,7 +2,7 @@ let app1 = new Vue({
   el: "#app1",
   data: {
     shows: true,
-    isActive: false,
+    isActive: true,
     dataId: 40,
     title: " i love dis",
     ingredients: ["meat", "pepper", "onion"],
