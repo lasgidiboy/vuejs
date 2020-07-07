@@ -1,11 +1,58 @@
-Vue.component("product", {
-  props: {
-    premium: {
-      type: Boolean,
-      required: true,
+Vue.component("product-review", {
+  template: `<div>
+   <form class="review-form" @submit.prevent="onSubmit">
+   <p>
+   <label>name:</label><input type="text" v-model="name">
+   </p>
+        
+        <p>
+        <label>review:</label>
+        <textarea v-model="review"></textarea>
+        </p>
+        
+        <label for="">rating</label>
+        <select name="" id="rating" v-model.number="rating">
+          <option value="3">5</option>
+          <option value="3">4</option>
+          <option value="3">3</option>
+          <option value="3">2</option>
+          <option value="3">1</option>
+        </select>
+        </p>
+        
+        <p><input type="submit" value="submit"></p>
+      </form>
+    </div>`,
+  data() {
+    return {
+      name: null,
+      review: null,
+      rating: null,
+    };
+  },
+  methods: {
+    onSubmit() {
+      if (this.name && this.review && this.rating) {
+        let productReview = {
+          name: this.name,
+          review: this.review,
+          rating: this.rating,
+        };
+
+        this.$emit("review-submitted", productReview);
+        this.name = null;
+        this.rating - null;
+        this.review = null;
+      } else {
+        if (!this.name) this.error.push("Name Required");
+        if (!this.review) this.error.push("Review Required");
+        if (!this.rating) this.error.push("Rating Required");
+      }
     },
   },
-  template: `<div>
+}),
+  Vue.component("product", {
+    template: `<div>
   <div class="product">
         <div class="product-image">
           <img :src="image" alt="" />
@@ -32,64 +79,90 @@ Vue.component("product", {
           >
             Add Cart
           </button>
-          <div class="cart">Cart({{cart}})</div>
+          <button @click="removeCart">remove</button>
+          
         </div>
       </div>
+            
   </div>`,
-  data() {
-    return {
-      product: "sucks",
-      brand: "papper",
-      selectedVariant: 0,
+    props: {
+      premium: {
+        type: Boolean,
+        required: true,
+      },
+    },
+    data() {
+      return {
+        product: "sucks",
+        brand: "papper",
+        selectedVariant: 0,
 
-      details: ["80% cotton", "20% poly", "gender-natural"],
-      variants: [
-        {
-          variantId: 1234,
-          variantColor: "green",
-          variantImage: "src/vmSocks-green-onWhite.jpg",
-          variantQuantity: 10,
-        },
-        {
-          variantId: 12345,
-          variantColor: "blue",
-          variantImage: "src/vmSocks-blue-onWhite.jpg",
-          variantQuantity: 10,
-        },
-      ],
-      cart: 0,
-    };
-  },
-  methods: {
-    addCart() {
-      this.cart += 1;
+        details: ["80% cotton", "20% poly", "gender-natural"],
+        variants: [
+          {
+            variantId: 1234,
+            variantColor: "green",
+            variantImage: "src/vmSocks-green-onWhite.jpg",
+            variantQuantity: 10,
+          },
+          {
+            variantId: 12345,
+            variantColor: "blue",
+            variantImage: "src/vmSocks-blue-onWhite.jpg",
+            variantQuantity: 10,
+          },
+        ],
+      };
     },
-    updateProduct(index) {
-      this.image = index;
-      console.log(index);
+    methods: {
+      addCart() {
+        this.$emit(
+          "add-to-cart",
+          this.variants[this.selectedVariant].variantId
+        );
+      },
+      removeCart() {
+        this.$emit("remove-cart");
+      },
+      updateProduct(index) {
+        this.image = index;
+        console.log(index);
+      },
     },
-  },
-  computed: {
-    title() {
-      return this.brand + " " + this.product;
+    computed: {
+      title() {
+        return this.brand + " " + this.product;
+      },
+      image() {
+        return this.variants[this.selectedVariant].variantImage;
+      },
+      inStock() {
+        return this.variants[this.selectedVariant].variantQuantity;
+      },
+      shipping() {
+        if (this.premium) {
+          return "free";
+        }
+        return 2.99;
+      },
     },
-    image() {
-      return this.variants[this.selectedVariant].variantImage;
-    },
-    inStock() {
-      return this.variants[this.selectedVariant].variantQuantity;
-    },
-    shipping() {
-      if (this.premium) {
-        return "free"
-      }
-      return 2.99
-    },
-  },
-});
+  });
 let app1 = new Vue({
   el: "#app",
   data: {
-    premium: false
-  }
+    premium: false,
+    cart: [],
+    reviews:[]
+  },
+  methods: {
+    updateCart(id) {
+      this.cart.push(id);
+    },
+    removeCart() {
+      this.cart--;
+    },
+    addReview(productReview) {
+      this.reviews.push(productReview)
+    }
+  },
 });

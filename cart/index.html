@@ -10,8 +10,15 @@
   <body>
     <div class="nav-bar"></div>
     <div id="app">
-      <product :premium="premium"></product>
-    </div>
+      <div class="cart">Cart({{ cart.length }})</div>
+
+      <product :premium="premium" @add-to-cart="updateCart" @remove-cart="removeCart"></product>
+      <h2>Reviews</h2>
+    <p v-if="!reviews.length"> No reviews</p>
+      <p v-for="(review, index) in reviews" :key="index">name: {{review.name}} <br> rating: {{review.rating}} <br> review:{{review.review}}</p>
+      <product-review @review-submitted="addReview"></product-review>
+
+     
     <script src="js/main2.js"></script>
   </body>
 </html>
