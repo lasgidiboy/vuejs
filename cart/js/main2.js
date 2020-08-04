@@ -122,7 +122,10 @@ Vue.component("product-review", {
         );
       },
       removeCart() {
-        this.$emit("remove-cart");
+        this.$emit(
+          "remove-cart",
+          this.variants[this.selectedVariant].variantId
+        );
       },
       updateProduct(index) {
         this.image = index;
@@ -158,8 +161,13 @@ let app1 = new Vue({
     updateCart(id) {
       this.cart.push(id);
     },
-    removeCart() {
-      this.cart--;
+    removeCart(id) {
+      for (let i = this.cart.length -1; i>=0; i--) {
+         if (this.cart[i] === id) {
+           this.cart.splice(i, 1);
+         }
+        
+      }
     },
     addReview(productReview) {
       this.reviews.push(productReview)
